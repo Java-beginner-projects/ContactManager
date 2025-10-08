@@ -61,7 +61,16 @@ public class ContactManager {
 		}
 	}
 	public static void searchContact() {
-		System.out.println("[searchContact] method not implemented yet.");
+		System.out.println("Enater name to search: ");
+		
+		String name = sc.nextLine();
+		int index = names.indexOf(name);
+		if(index!= -1) {
+			System.out.println(name+": "+phones.get(index));
+		}
+		else {
+			System.out.println("Contact not found!");
+		}
 	}
 	public static void updateContact() {
 		System.out.println("[updateContact] method not implemented yet.");
