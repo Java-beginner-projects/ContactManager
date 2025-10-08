@@ -51,7 +51,14 @@ public class ContactManager {
 		}
 	}
 	public static void viewContacts() {
-		System.out.println("[viewContacts] method not implemented yet.");
+		if(phones.isEmpty()) {
+			System.out.println("No contacts available.");
+		}else {
+			System.out.println("Contact List:");
+			for(int i = 0;i<names.size();i++) {
+				System.out.println(names.get(i)+": "+phones.get(i));
+			}
+		}
 	}
 	public static void searchContact() {
 		System.out.println("[searchContact] method not implemented yet.");
@@ -73,7 +80,7 @@ public class ContactManager {
 		System.out.println("4. Update a Contact");
 		System.out.println("5. Delete a Contact");
 		System.out.println("6. Exit");
-		System.out.println("Choose an option (1-6): ");
+		System.out.print("Choose an option (1-6): ");
 		String choice = sc.nextLine().trim();
 		if(choice.equals("6")) {
 			System.out.println("Goodbye!");
