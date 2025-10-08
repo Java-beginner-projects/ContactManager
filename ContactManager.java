@@ -73,10 +73,50 @@ public class ContactManager {
 		}
 	}
 	public static void updateContact() {
-		System.out.println("[updateContact] method not implemented yet.");
+		System.out.print("Enter the contact name to update: ");
+		
+		String name = sc.nextLine();
+		int index = names.indexOf(name);
+		if(index == -1) {
+			System.out.println("Contact not found!");
+			return;
+		}
+		System.out.print("Enter new name(press Enter to keep same): ");
+		String newName = sc.nextLine();
+		System.out.print("Enter new phone number (press Enter to keep same): ");
+		String newPhone = sc.nextLine();
+		
+		//when the name is not empty... it updates the name
+		if(!newName.isEmpty()) {
+			names.set(index, newName);
+		}
+		if(!newPhone.isEmpty()) {
+			if(!newPhone.matches("\\d{10}")) {
+				System.out.println("Invalid phone number!");
+				return;
+			}
+			phones.set(index, newPhone);
+		}
+		System.out.println("Contact updated successfully!");
 	}
 	public static void deleteContact() {
-		System.out.println("[deleteContact] method not implemetned yet.");
+		System.out.print("Enter name to delete: ");
+		String nameToDelete = sc.nextLine();
+		int indexToDelete = -1;
+		for(int i = 0;i<names.size();i++) {
+			if(names.get(i).equalsIgnoreCase(nameToDelete)) {
+				indexToDelete = i;
+				break;
+			}
+		}
+		if(indexToDelete == -1) {
+			System.out.println("Contact not found!");
+			return;
+		}else {
+			names.remove(indexToDelete);
+			phones.remove(indexToDelete);
+			System.out.println("Contact deleted successfully!");
+		}
 	}
 
 	public static void main(String[] args) {
