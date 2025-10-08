@@ -31,7 +31,24 @@ public class ContactManager {
 	}
 	
 	public static void addContact() {
-		System.out.println("[addContact] method not implemented yet.");
+		System.out.print("Enter contact name: ");
+		String name = sc.nextLine().trim();
+		
+		System.out.print("Enter phone number (10 digits): ");
+		String phone = sc.nextLine().trim();
+		
+		//check for string empty or not, Check for length of the string
+		if(name.isEmpty() || phone.isEmpty() || !phone.matches("\\d{10}")) {
+			System.out.println("Invalid input!");
+			return;
+		}
+		if(names.contains(name)) {
+			System.out.println("Contact already exists!");
+		}else {
+			names.add(name);
+			phones.add(phone);
+			System.out.println("Contact added successfully!");
+		}
 	}
 	public static void viewContacts() {
 		System.out.println("[viewContacts] method not implemented yet.");
